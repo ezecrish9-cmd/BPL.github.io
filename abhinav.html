@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav - Bottlers Premier League</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0b0f19; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .glow-effect { box-shadow: 0 0 20px rgba(239, 68, 68, 0.2); }
+        .glow-effect:hover { box-shadow: 0 0 30px rgba(239, 68, 68, 0.4); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex items-center justify-center min-h-screen">
+
+    <div class="max-w-md w-full bg-gray-900 border border-red-900/40 rounded-2xl p-6 text-center shadow-2xl glow-effect relative overflow-hidden">
+        
+        <a href="index.html" class="absolute top-4 left-4 text-gray-500 hover:text-red-400 transition text-sm flex items-center gap-1">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+
+        <div class="mb-6 mt-4">
+            <img src="luffy.png" alt="Abhinav - Luffy" class="w-full h-52 object-cover rounded-xl border border-red-500/30 shadow-md">
+        </div>
+
+        <h1 class="text-3xl font-extrabold text-red-400 tracking-wide uppercase">Abhinav</h1>
+        <p class="text-sm font-semibold text-gray-500 mt-1 uppercase tracking-widest">Character: Monkey D. Luffy</p>
+
+        <div class="my-6 border-t border-gray-800/80"></div>
+
+        <div class="bg-gray-950/60 border border-gray-800/60 p-4 rounded-xl">
+            <h3 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-3">
+                <i class="fa-solid fa-music text-red-500 mr-1"></i> Signature Anthem
+            </h3>
+            
+            <audio id="luffy-theme" preload="auto">
+                <source src="luffy-theme.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <button onclick="toggleTheme()" id="play-btn" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-2.5 px-4 rounded-lg shadow-lg flex items-center justify-center gap-2 transition duration-200 uppercase tracking-wider text-xs">
+                <i id="btn-icon" class="fa-solid fa-play"></i> <span id="btn-text">Play Theme Song</span>
+            </button>
+        </div>
+
+        <p class="text-xs font-mono text-gray-600 mt-4 italic">"Kaizoku-ou ni naru otoko da!"</p>
+    </div>
+
+    <script>
+        const audio = document.getElementById('luffy-theme');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnText = document.getElementById('btn-text');
+
+        function toggleTheme() {
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    console.error("Playback failed. Ensure your luffy-theme.mp3 file is placed inside the correct folder:", error);
+                    alert("Audio file not found! Make sure 'luffy-theme.mp3' is downloaded from YouTube and placed in the folder next to this html file.");
+                });
+                btnIcon.className = "fa-solid fa-pause";
+                btnText.innerText = "Pause Theme Song";
+            } else {
+                audio.pause();
+                resetButton();
+            }
+        }
+
+        audio.onended = function() {
+            resetButton();
+        };
+
+        function resetButton() {
+            btnIcon.className = "fa-solid fa-play";
+            btnText.innerText = "Play Theme Song";
+        }
+    </script>
+</body>
+</html>

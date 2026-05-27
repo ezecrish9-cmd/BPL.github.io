@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottlers Premier League</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0b0f19; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .player-card:hover { transform: translateY(-3px); transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <audio id="bpl-theme" src="ipl-theme.mp3" loop></audio>
+
+    <div id="welcome-overlay" class="fixed inset-0 bg-[#0b0f19] z-50 flex flex-col items-center justify-center p-6 text-center">
+        <div class="max-w-md bg-gray-900 border border-yellow-500/30 p-8 rounded-2xl shadow-2xl">
+            <h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-purple-500 uppercase tracking-wider mb-4">
+                Bottlers Premier League
+            </h2>
+            <p class="text-gray-400 text-sm mb-6">Welcome to the ultimate 5-player brawl. Tap below to enter the arena and start the anthem!</p>
+            <button onclick="startWebsite()" class="w-full bg-gradient-to-r from-red-500 to-purple-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:from-red-600 hover:to-purple-700 transition transform active:scale-95 text-lg uppercase tracking-wider animate-pulse">
+                <i class="fa-solid fa-play mr-2"></i> Enter Tournament
+            </button>
+        </div>
+    </div>
+
+    <header class="text-center my-8">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-purple-500 uppercase tracking-wider drop-shadow-lg">
+            Bottlers Premier League
+        </h1>
+        <p class="text-gray-400 mt-2 text-sm md:text-base">Track stats, match schedules, and leaderboards for the ultimate 5-player brawl.</p>
+    </header>
+
+    <section class="max-w-6xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-red-400 mb-6 border-b border-gray-800 pb-2"><i class="fa-solid fa-users mr-2"></i> Player Roster</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            
+            <a href="abhinav.html" class="player-card bg-gray-900 border border-red-900/40 hover:border-red-500/50 rounded-xl p-6 text-center shadow-md block transition">
+                <h3 class="font-bold text-xl text-red-400">Abhinav</h3>
+            </a>
+
+            <a href="siddhart.html" class="player-card bg-gray-900 border border-green-900/40 hover:border-green-500/50 rounded-xl p-6 text-center shadow-md block transition">
+                <h3 class="font-bold text-xl text-green-400">Siddhart</h3>
+            </a>
+
+            <a href="om.html" class="player-card bg-gray-900 border border-orange-900/40 hover:border-orange-500/50 rounded-xl p-6 text-center shadow-md block transition">
+                <h3 class="font-bold text-xl text-orange-400">Om</h3>
+            </a>
+
+            <a href="akash.html" class="player-card bg-gray-900 border border-blue-900/40 hover:border-blue-500/50 rounded-xl p-6 text-center shadow-md block transition">
+                <h3 class="font-bold text-xl text-blue-400">Akash</h3>
+            </a>
+
+            <a href="naman.html" class="player-card bg-gray-900 border border-purple-900/40 hover:border-purple-500/50 rounded-xl p-6 text-center shadow-md block transition">
+                <h3 class="font-bold text-xl text-purple-400">Naman</h3>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-gray-800 pb-2"><i class="fa-solid fa-trophy mr-2"></i> Current Standings</h2>
+        <div class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[500px]">
+                <thead>
+                    <tr class="bg-gray-800 text-gray-300 text-sm uppercase tracking-wider">
+                        <th class="p-4">Player</th>
+                        <th class="p-4 text-center">Played</th>
+                        <th class="p-4 text-center text-green-400">Wins</th>
+                        <th class="p-4 text-center text-red-400">Losses</th>
+                        <th class="p-4 text-center text-amber-400">NRR</th>
+                        <th class="p-4 text-center">Points</th>
+                    </tr>
+                </thead>
+                <tbody id="standings-body" class="divide-y divide-gray-800 text-sm">
+                    <tr data-points="4" data-nrr="4.833"><td class="p-4 font-semibold">Abhinav</td><td class="p-4 text-center">2</td><td class="p-4 text-center text-green-400">2</td><td class="p-4 text-center text-red-400">0</td><td class="p-4 text-center text-amber-400 font-mono">+4.833</td><td class="p-4 text-center font-bold">4</td></tr>
+                    <tr data-points="4" data-nrr="4.833"><td class="p-4 font-semibold">Siddhart</td><td class="p-4 text-center">2</td><td class="p-4 text-center text-green-400">2</td><td class="p-4 text-center text-red-400">0</td><td class="p-4 text-center text-amber-400 font-mono">+4.833</td><td class="p-4 text-center font-bold">4</td></tr>
+                    <tr data-points="2" data-nrr="3.167"><td class="p-4 font-semibold">Akash</td><td class="p-4 text-center">2</td><td class="p-4 text-center text-green-400">1</td><td class="p-4 text-center text-red-400">1</td><td class="p-4 text-center text-amber-400 font-mono">+3.167</td><td class="p-4 text-center font-bold">2</td></tr>
+                    <tr data-points="2" data-nrr="-3.167"><td class="p-4 font-semibold">Om</td><td class="p-4 text-center">2</td><td class="p-4 text-center text-green-400">1</td><td class="p-4 text-center text-red-400">1</td><td class="p-4 text-center text-amber-400 font-mono">-3.167</td><td class="p-4 text-center font-bold">2</td></tr>
+                    <tr data-points="0" data-nrr="-4.833"><td class="p-4 font-semibold">Naman</td><td class="p-4 text-center">2</td><td class="p-4 text-center text-green-400">0</td><td class="p-4 text-center text-red-400">2</td><td class="p-4 text-center text-amber-400 font-mono">-4.833</td><td class="p-4 text-center font-bold">0</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-orange-400 mb-6 border-b border-gray-800 pb-2"><i class="fa-solid fa-fire mr-2"></i> Runs Update</h2>
+        <div class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[500px]">
+                <thead>
+                    <tr class="bg-gray-800 text-gray-300 text-sm uppercase tracking-wider">
+                        <th class="p-4">Player</th>
+                        <th class="p-4 text-center">Matches</th>
+                        <th class="p-4 text-center text-orange-400">Runs</th>
+                        <th class="p-4 text-center">Highest Score</th>
+                    </tr>
+                </thead>
+                <tbody id="runs-body" class="divide-y divide-gray-800 text-sm">
+                    <tr data-runs="15"><td class="p-4 font-semibold">Abhinav</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-orange-400 font-bold">15</td><td class="p-4 text-center">15</td></tr>
+                    <tr data-runs="2"><td class="p-4 font-semibold">Siddhart</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-orange-400 font-bold">2</td><td class="p-4 text-center">2</td></tr>
+                    <tr data-runs="18"><td class="p-4 font-semibold">Om</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-orange-400 font-bold">18</td><td class="p-4 text-center">18</td></tr>
+                    <tr data-runs="2"><td class="p-4 font-semibold">Akash</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-orange-400 font-bold">2</td><td class="p-4 text-center">2</td></tr>
+                    <tr data-runs="16"><td class="p-4 font-semibold">Naman</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-orange-400 font-bold">16</td><td class="p-4 text-center">16</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-blue-400 mb-6 border-b border-gray-800 pb-2"><i class="fa-solid fa-bullseye mr-2"></i> Wickets Update</h2>
+        <div class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[500px]">
+                <thead>
+                    <tr class="bg-gray-800 text-gray-300 text-sm uppercase tracking-wider">
+                        <th class="p-4">Player</th>
+                        <th class="p-4 text-center">Matches</th>
+                        <th class="p-4 text-center text-blue-400">Wickets</th>
+                        <th class="p-4 text-center">Best Bowling</th>
+                    </tr>
+                </thead>
+                <tbody id="wickets-body" class="divide-y divide-gray-800 text-sm">
+                    <tr data-wickets="2"><td class="p-4 font-semibold">Abhinav</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-blue-400 font-bold">2</td><td class="p-4 text-center">2/0</td></tr>
+                    <tr data-wickets="0"><td class="p-4 font-semibold">Siddhart</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-blue-400 font-bold">0</td><td class="p-4 text-center">0/10</td></tr>
+                    <tr data-wickets="1"><td class="p-4 font-semibold">Om</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-blue-400 font-bold">1</td><td class="p-4 text-center">1/16</td></tr>
+                    <tr data-wickets="3"><td class="p-4 font-semibold">Akash</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-blue-400 font-bold">3</td><td class="p-4 text-center">3/16</td></tr>
+                    <tr data-wickets="2"><td class="p-4 font-semibold">Naman</td><td class="p-4 text-center">1</td><td class="p-4 text-center text-blue-400 font-bold">2</td><td class="p-4 text-center">2/10</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mb-12">
+        <h2 class="text-2xl font-bold text-teal-400 mb-6 border-b border-gray-800 pb-2"><i class="fa-solid fa-calendar-days mr-2"></i> Match Schedule & Scoreboard</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 1</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Abhinav,Siddhart,Akash</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Naman,Om</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">50/3</span> | <span class="text-white font-bold">26/5</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 2</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Abhinav, Siddhu, Naman</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Akash, Om</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 3</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Abhinav,Siddhart,Om</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Naman, Akash</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">36/6</span> | <span class="text-white font-bold">31/5</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 4</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Abhinav, Akash, Naman</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Siddhu, Om</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 5</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Abhinav, Akash, Om</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Siddhu, Naman</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 6</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Abhinav, Naman, Om</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Siddhu, Akash</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 7</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Siddhu, Akash, Naman</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Abhinav, Om</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 8</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Siddhu, Akash, Om</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Abhinav, Naman</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 9</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Siddhu, Naman, Om</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Abhinav, Akash</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <span class="text-xs font-bold uppercase text-teal-500 mb-2">Match 10</span>
+                <div class="flex items-center justify-between mb-3">
+                    <div class="text-sm font-semibold text-gray-300">Akash, Naman, Om</div>
+                    <div class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded font-bold mx-2">VS</div>
+                    <div class="text-sm font-semibold text-gray-300 text-right">Abhinav, Siddhu</div>
+                </div>
+                <div class="text-xs text-center text-gray-400 bg-gray-800/80 rounded py-1.5 border border-gray-700 font-mono tracking-wide">
+                    Score: <span class="text-white font-bold">0/0</span> | <span class="text-white font-bold">0/0</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. SORT STANDINGS TABLE (Points, then NRR)
+            const standingsBody = document.getElementById("standings-body");
+            const standingsRows = Array.from(standingsBody.querySelectorAll("tr"));
+
+            standingsRows.sort((a, b) => {
+                const pointsA = parseInt(a.getAttribute("data-points")) || 0;
+                const pointsB = parseInt(b.getAttribute("data-points")) || 0;
+                
+                if (pointsB !== pointsA) {
+                    return pointsB - pointsA;
+                } else {
+                    const nrrA = parseFloat(a.getAttribute("data-nrr")) || 0;
+                    const nrrB = parseFloat(b.getAttribute("data-nrr")) || 0;
+                    return nrrB - nrrA;
+                }
+            });
+            standingsRows.forEach(row => standingsBody.appendChild(row));
+
+            // 2. SORT RUNS TABLE (Highest to Lowest Runs)
+            const runsBody = document.getElementById("runs-body");
+            const runsRows = Array.from(runsBody.querySelectorAll("tr"));
+
+            runsRows.sort((a, b) => {
+                const runsA = parseInt(a.getAttribute("data-runs")) || 0;
+                const runsB = parseInt(b.getAttribute("data-runs")) || 0;
+                return runsB - runsA;
+            });
+            runsRows.forEach(row => runsBody.appendChild(row));
+
+            // 3. SORT WICKETS TABLE (Highest to Lowest Wickets)
+            const wicketsBody = document.getElementById("wickets-body");
+            const wicketsRows = Array.from(wicketsBody.querySelectorAll("tr"));
+
+            wicketsRows.sort((a, b) => {
+                const wicketsA = parseInt(a.getAttribute("data-wickets")) || 0;
+                const wicketsB = parseInt(b.getAttribute("data-wickets")) || 0;
+                return wicketsB - wicketsA;
+            });
+            wicketsRows.forEach(row => wicketsBody.appendChild(row));
+        });
+
+        function startWebsite() {
+            const audio = document.getElementById('bpl-theme');
+            const overlay = document.getElementById('welcome-overlay');
+            
+            audio.play().catch(error => {
+                console.error("Audio playback triggered a safety blocker:", error);
+            });
+            
+            overlay.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
